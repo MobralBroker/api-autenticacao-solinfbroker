@@ -12,4 +12,4 @@ jobs:
       - name: Conecta-se ao servidor na AWS
         run: ssh root@172.31.29.23
              s
-                                
+
