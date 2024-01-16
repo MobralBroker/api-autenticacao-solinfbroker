@@ -10,7 +10,7 @@ jobs:
     env:
       AWS_REGION: us-east-2
     steps:    
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Conecta-se ao servidor na AWS
         run: ssh root@3.129.12.206
         
