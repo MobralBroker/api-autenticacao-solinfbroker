@@ -10,5 +10,5 @@ jobs:
     steps:    
       - uses: actions/checkout@v1
       - name: Conecta-se ao servidor na AWS
-        run: ssh ubuntu@ec2-3-129-12-206.us-east-2.compute.amazonaws.com
-             
+        run: ssh ubuntu@ip-172-31-29-23
+                     
