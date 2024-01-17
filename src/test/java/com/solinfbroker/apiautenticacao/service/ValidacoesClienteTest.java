@@ -32,15 +32,6 @@ class ValidacoesClienteTest {
     }
 
     @Test
-    void isValidCNPJ() {
-        String cnpjValido = "11444777000161"; // um CNPJ válido
-        String cnpjInvalido = "123"; // um CNPJ inválido
-
-        assertTrue(validacoesCliente.isValidCNPJ(cnpjValido));
-        assertFalse(validacoesCliente.isValidCNPJ(cnpjInvalido));
-    }
-
-    @Test
     void validacaoIdade() {
         LocalDate dataNascimentoMaior = LocalDate.now().minusYears(20);
         LocalDate dataNascimentoMenor = LocalDate.now().minusYears(15);

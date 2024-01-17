@@ -30,17 +30,14 @@ class ClienteRepositoryTest {
     void findByEmailSuccess() {
         Set<PermissaoModel> permissoes = new HashSet<>();
         Set<PessoaFisica> pessoaFisica = new HashSet<>();
-        Set<PessoaJuridica> pessoaJuridica = new HashSet<>();
 
         ClienteModel clienteModel = new ClienteModel(
                 "teste@teste.com",
                 "senhaTeste",
                 permissoes,
-                enumTipoPessoa.PF,
                 "usuario teste",
-                pessoaFisica,
-                pessoaJuridica
-        );
+                pessoaFisica);
+
         this.criarCliente(clienteModel);
 
         ClienteModel result = this.clienteRepository.findByEmail(clienteModel.getEmail());

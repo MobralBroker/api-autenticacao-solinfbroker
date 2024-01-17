@@ -55,9 +55,6 @@ public class ClienteModel implements UserDetails{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private enumTipoPessoa tipo;
-
     private String nomeUsuario;
 
     private String senha;
@@ -69,36 +66,28 @@ public class ClienteModel implements UserDetails{
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cliente")
     private Set<PessoaFisica> pessoaFisica = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_cliente")
-    private Set<PessoaJuridica> pessoaJuridica = new HashSet<>();
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "cliente_permissao", joinColumns =  @JoinColumn(name="id_cliente"), inverseJoinColumns = @JoinColumn(name="id_permissao"))
     private Set<PermissaoModel> permissoes;
 
-    public ClienteModel(String email, String senha, Set<PermissaoModel> role, enumTipoPessoa tipo, String nomeUsuario, Set<PessoaFisica> pessoaFisica, Set<PessoaJuridica> pessoaJuridica){
+    public ClienteModel(String email, String senha, Set<PermissaoModel> role, String nomeUsuario, Set<PessoaFisica> pessoaFisica){
         this.email = email;
-        this.tipo = tipo;
         this.senha = senha;
         this.permissoes = role;
         this.nomeUsuario = nomeUsuario;
+
         for(PessoaFisica pf : pessoaFisica){
+
             PessoaFisica pessoaFisica1 = new PessoaFisica();
             pessoaFisica1.setCpf(pf.getCpf());
             pessoaFisica1.setNome(pf.getNome());
             pessoaFisica1.setDataNascimento(pf.getDataNascimento());
             this.pessoaFisica.add(pessoaFisica1);
         }
+    }
 
-        for(PessoaJuridica pj : pessoaJuridica){
-            PessoaJuridica pessoaJuridica1 = new PessoaJuridica();
-            pessoaJuridica1.setCnpj(pj.getCnpj());
-            pessoaJuridica1.setNomeFantasia(pj.getNomeFantasia());
-            pessoaJuridica1.setRazaoSocial(pj.getRazaoSocial());
-            this.pessoaJuridica.add((pessoaJuridica1));
-        }
+    public ClienteModel() {
+        
     }
 
     @Override
@@ -137,5 +126,61 @@ public class ClienteModel implements UserDetails{
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public Set<PessoaFisica> getPessoaFisica() {
+        return pessoaFisica;
+    }
+
+    public void setPessoaFisica(Set<PessoaFisica> pessoaFisica) {
+        this.pessoaFisica = pessoaFisica;
+    }
+
+    public Set<PermissaoModel> getPermissoes() {
+        return permissoes;
+    }
+
+    public void setPermissoes(Set<PermissaoModel> permissoes) {
+        this.permissoes = permissoes;
     }
 }
