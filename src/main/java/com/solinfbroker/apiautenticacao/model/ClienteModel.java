@@ -50,7 +50,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "cliente")
 public class ClienteModel implements UserDetails{
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -77,17 +76,12 @@ public class ClienteModel implements UserDetails{
         this.nomeUsuario = nomeUsuario;
 
         for(PessoaFisica pf : pessoaFisica){
-
             PessoaFisica pessoaFisica1 = new PessoaFisica();
             pessoaFisica1.setCpf(pf.getCpf());
             pessoaFisica1.setNome(pf.getNome());
             pessoaFisica1.setDataNascimento(pf.getDataNascimento());
             this.pessoaFisica.add(pessoaFisica1);
         }
-    }
-
-    public ClienteModel() {
-        
     }
 
     @Override

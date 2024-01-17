@@ -19,6 +19,21 @@ import java.time.LocalDate;
 @Table(name = "pessoafisica")
 public class PessoaFisica {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
+    @Pattern(regexp = "^\\d{11}$", message = "O campo 'cpf' deve conter exatamente 11 dígitos")
+    private String cpf;
+
+    @NotNull
+    private String nome;
+
+    @Column(name = "nascimento")
+    @JsonFormat(pattern="dd/MM/yyyy")
+    private LocalDate dataNascimento;
+
     public Long getId() {
         return id;
     }
@@ -50,20 +65,5 @@ public class PessoaFisica {
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NotNull
-    @Pattern(regexp = "^\\d{11}$", message = "O campo 'cpf' deve conter exatamente 11 dígitos")
-    private String cpf;
-
-    @NotNull
-    private String nome;
-
-    @Column(name = "nascimento")
-    @JsonFormat(pattern="dd/MM/yyyy")
-    private LocalDate dataNascimento;
 
 }

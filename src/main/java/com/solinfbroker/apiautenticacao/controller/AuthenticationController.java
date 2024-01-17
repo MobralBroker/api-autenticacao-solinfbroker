@@ -49,14 +49,12 @@ public class AuthenticationController {
         if(authenticationService.validarToken(token)){
             return new ResponseEntity<>("Token Não Autorizado",HttpStatus.UNAUTHORIZED); 
         };
-        return new ResponseEntity<>("Token Autorizado",HttpStatus.ACCEPTED); 
-
+        return new ResponseEntity<>("Token Autorizado",HttpStatus.ACCEPTED);
     }
-    
+
     @GetMapping("/usuario/{login}")
-    public ResponseEntity getUsuario(@PathVariable String login) {
+    public ResponseEntity getUsuario(@PathVariable("login") String login) {
         return ResponseEntity.ok().body(clienteRepository.findByEmail(login));
     }
-    
     
 }
