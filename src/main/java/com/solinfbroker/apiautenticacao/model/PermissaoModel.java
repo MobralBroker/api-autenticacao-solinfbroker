@@ -6,9 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
+
 /**
  * Classe responsável pela modelagem de dados referente as permissões,
  * utilizada para mapear a tabela 'permissões' do banco de dados.
@@ -26,9 +25,11 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode
+@Getter
+@Setter
 @Table(name = "permissoes")
 public class PermissaoModel {
-    
+
     @Id
     @Column(name = "id")
     private Long id;
