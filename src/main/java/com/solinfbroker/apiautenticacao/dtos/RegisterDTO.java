@@ -2,8 +2,6 @@ package com.solinfbroker.apiautenticacao.dtos;
 
 import com.solinfbroker.apiautenticacao.model.PermissaoModel;
 import com.solinfbroker.apiautenticacao.model.PessoaFisica;
-import com.solinfbroker.apiautenticacao.model.PessoaJuridica;
-import com.solinfbroker.apiautenticacao.model.enumTipoPessoa;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
@@ -18,11 +16,8 @@ public record RegisterDTO(
 
         Set<PermissaoModel> role,
         @NotNull
-        enumTipoPessoa tipo,
-        @NotNull
         String nomeUsuario,
-        Set<PessoaFisica> pessoaFisica,
-        Set<PessoaJuridica> pessoaJuridica
+        Set<PessoaFisica> pessoaFisica
 ) {
     
 }

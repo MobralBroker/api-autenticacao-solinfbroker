@@ -47,7 +47,7 @@ public class WebSecurityConfig {
 
         .authorizeHttpRequests(authorize -> authorize
             .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
-            .requestMatchers(HttpMethod.GET, "/auth/validar").permitAll()
+            .requestMatchers(HttpMethod.GET, "/auth/**").permitAll()
             .requestMatchers(AUTH_WHITE_LIST).permitAll()
             .anyRequest().authenticated()
            )

@@ -62,7 +62,6 @@ class AuthenticationServiceTest {
         pessoaFisicaSet.add(pessoaFisica);
 
         when(clienteRepository.findByEmail(cliente.email())).thenReturn(null);
-        when(cliente.tipo()).thenReturn(enumTipoPessoa.PF);
         when(cliente.pessoaFisica()).thenReturn(pessoaFisicaSet);
         when(pessoaFisica.getCpf()).thenReturn("1234567891");
         when(validacoesCliente.isValidCPF(anyString())).thenReturn(false);
@@ -81,30 +80,10 @@ class AuthenticationServiceTest {
         pessoaFisicaSet.add(pessoaFisica);
 
         when(clienteRepository.findByEmail(cliente.email())).thenReturn(null);
-        when(cliente.tipo()).thenReturn(enumTipoPessoa.PF);
         when(cliente.pessoaFisica()).thenReturn(pessoaFisicaSet);
         when(pessoaFisica.getCpf()).thenReturn("74258841005");
         when(validacoesCliente.isValidCPF(anyString())).thenReturn(true);
         when(validacoesCliente.validacaoIdade(any())).thenReturn(false);
-
-        assertThrows(ApiRequestException.class, () -> {
-            authenticationService.registrarCliente(cliente);
-        });
-    }
-
-    @Test
-    @DisplayName("Deve retornar erro caso o CNPJ for inválido")
-    void deveRetornarErroCasoCnpjInvalido() {
-        RegisterDTO cliente = mock(RegisterDTO.class);
-        PessoaJuridica pessoaJuridica = mock(PessoaJuridica.class);
-        Set<PessoaJuridica> pessoaJuridicaSet = new HashSet<>();
-        pessoaJuridicaSet.add(pessoaJuridica);
-
-        when(clienteRepository.findByEmail(cliente.email())).thenReturn(null);
-        when(cliente.tipo()).thenReturn(enumTipoPessoa.PJ);
-        when(cliente.pessoaJuridica()).thenReturn(pessoaJuridicaSet);
-        when(pessoaJuridica.getCnpj()).thenReturn("13386640000100");
-        when(validacoesCliente.isValidCNPJ(anyString())).thenReturn(false);
 
         assertThrows(ApiRequestException.class, () -> {
             authenticationService.registrarCliente(cliente);
@@ -125,25 +104,20 @@ class AuthenticationServiceTest {
         pessoaFisica.setDataNascimento(LocalDate.now().minusYears(18));
         Set<PessoaFisica> pessoaFisicaSet = new HashSet<>();
         pessoaFisicaSet.add(pessoaFisica);
-        Set<PessoaJuridica> pessoaJuridicaSet = new HashSet<>();
         RegisterDTO cliente =  new RegisterDTO(
                 "pedro@teste.com",
                 "123",
                 permissaoModelSet,
-                enumTipoPessoa.PF,
                 "Pedro",
-                pessoaFisicaSet,
-                pessoaJuridicaSet
+                pessoaFisicaSet
                 );
 
         ClienteModel newUsuarioModel = new ClienteModel(
                 cliente.email(),
                 "encryptPassword",
                 permissaoModelSet,
-                cliente.tipo(),
                 cliente.nomeUsuario(),
-                cliente.pessoaFisica(),
-                cliente.pessoaJuridica());
+                cliente.pessoaFisica());
         newUsuarioModel.setId(1L);
         when(clienteRepository.findByEmail(cliente.email())).thenReturn(null);
         when(validacoesCliente.isValidCPF(anyString())).thenReturn(true);
