@@ -29,21 +29,6 @@ import lombok.*;
 @Setter
 @Table(name = "permissoes")
 public class PermissaoModel {
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getPermissao() {
-        return permissao;
-    }
-
-    public void setPermissao(String permissao) {
-        this.permissao = permissao;
-    }
 
     @Id
     @Column(name = "id")
