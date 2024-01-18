@@ -1,5 +1,6 @@
 package com.solinfbroker.apiautenticacao.service;
 
+import com.solinfbroker.apiautenticacao.dtos.AuthResponseDTO;
 import com.solinfbroker.apiautenticacao.dtos.AuthenticationDTO;
 import com.solinfbroker.apiautenticacao.dtos.ClienteModelDTO;
 import com.solinfbroker.apiautenticacao.dtos.RegisterDTO;
@@ -29,10 +30,10 @@ public class AuthenticationService {
 
     @Autowired
     ClienteRepository clienteRepository;
-    public String gerarAutenticacao(AuthenticationDTO data){
+    public AuthResponseDTO gerarAutenticacao(AuthenticationDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.senha());
         var auth = authenticationManager.authenticate(usernamePassword);
-        return tokenService.generateToken((ClienteModel)auth.getPrincipal());
+        return new AuthResponseDTO(tokenService.generateToken((ClienteModel)auth.getPrincipal()),clienteRepository.findByEmail(data.email()).getId());
     }
 
     public ClienteModelDTO registrarCliente (@Valid RegisterDTO cliente){

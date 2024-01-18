@@ -34,8 +34,7 @@ public class AuthenticationController {
 
     @PostMapping("/login") // Método responsável por efetuar a autenticação e gerar o token de acesso ao cliente
     public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
-        String token = authenticationService.gerarAutenticacao(data);
-        return ResponseEntity.ok(new AuthResponseDTO(token));
+        return ResponseEntity.ok(authenticationService.gerarAutenticacao(data));
     }
 
     @PostMapping("/register")
