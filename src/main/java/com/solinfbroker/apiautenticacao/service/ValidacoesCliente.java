@@ -16,8 +16,13 @@ public class ValidacoesCliente {
                 (cpf.length() != 11))
             return (false);
 
-        char dig10, dig11;
-        int sm, i, r, num, peso;
+        char dig10;
+        char dig11;
+        int sm;
+        int i;
+        int r;
+        int num;
+        int peso;
 
         try {
             sm = 0;

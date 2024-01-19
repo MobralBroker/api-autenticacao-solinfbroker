@@ -1,25 +1,22 @@
 package com.solinfbroker.apiautenticacao.service;
 
-import com.solinfbroker.apiautenticacao.model.ClienteModel;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.solinfbroker.apiautenticacao.repository.ClienteRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.solinfbroker.apiautenticacao.repository.ClienteRepository;
-
 
 @Service
+@AllArgsConstructor
 public class AuthorizationService implements UserDetailsService {
 
-    @Autowired
-    ClienteRepository clienteRepository;
+
+    private final ClienteRepository clienteRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        ClienteModel user = clienteRepository.findByEmail(username);
-
         return clienteRepository.findByEmail(username);
     }
     
