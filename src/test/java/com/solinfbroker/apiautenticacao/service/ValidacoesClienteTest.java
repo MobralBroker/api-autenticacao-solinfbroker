@@ -1,18 +1,13 @@
 package com.solinfbroker.apiautenticacao.service;
 
-import com.solinfbroker.apiautenticacao.dtos.RegisterDTO;
-import com.solinfbroker.apiautenticacao.exception.ApiRequestException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 @ActiveProfiles("test")
 class ValidacoesClienteTest {
 
