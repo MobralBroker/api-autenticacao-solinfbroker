@@ -6,17 +6,16 @@ import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 @Data
 @Getter
 @Setter
-public class ApiException {
+public class ApiExcept {
     private final String mensagem;
     private final HttpStatus httpStatus;
     private final LocalDateTime timeStamp;
 
-    public ApiException(String mensagem, HttpStatus httpStatus, LocalDateTime timeStamp) {
+    public ApiExcept(String mensagem, HttpStatus httpStatus, LocalDateTime timeStamp) {
         this.mensagem = mensagem;
         this.httpStatus = httpStatus;
         this.timeStamp = timeStamp;

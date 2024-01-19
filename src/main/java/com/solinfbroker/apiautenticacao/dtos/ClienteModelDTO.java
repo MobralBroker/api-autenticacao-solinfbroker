@@ -19,28 +19,5 @@ public record ClienteModelDTO(
         double saldo,
         Set<PessoaFisica> pessoaFisica
 ) {
-        @Override
-        public Long id() {
-                return id;
-        }
 
-        @Override
-        public String email() {
-                return email;
-        }
-
-        @Override
-        public String nomeUsuario() {
-                return nomeUsuario;
-        }
-
-        @Override
-        public double saldo() {
-                return saldo;
-        }
-
-        @Override
-        public Set<PessoaFisica> pessoaFisica() {
-                return pessoaFisica;
-        }
 }

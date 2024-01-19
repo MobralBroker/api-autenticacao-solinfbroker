@@ -1,5 +1,6 @@
 package com.solinfbroker.apiautenticacao.service;
 
+import com.solinfbroker.apiautenticacao.dtos.AuthResponseDTO;
 import com.solinfbroker.apiautenticacao.dtos.AuthenticationDTO;
 import com.solinfbroker.apiautenticacao.dtos.ClienteModelDTO;
 import com.solinfbroker.apiautenticacao.dtos.RegisterDTO;
@@ -8,7 +9,7 @@ import com.solinfbroker.apiautenticacao.model.ClienteModel;
 import com.solinfbroker.apiautenticacao.model.PermissaoModel;
 import com.solinfbroker.apiautenticacao.repository.ClienteRepository;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,21 +19,22 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
+@AllArgsConstructor
 public class AuthenticationService {
-    @Autowired
-    TokenService tokenService;
-    @Autowired
-    AuthenticationManager authenticationManager;
 
-    @Autowired
-    ValidacoesCliente validacoesCliente;
+    private final TokenService tokenService;
 
-    @Autowired
-    ClienteRepository clienteRepository;
-    public String gerarAutenticacao(AuthenticationDTO data){
+    private final AuthenticationManager authenticationManager;
+
+
+    private final ValidacoesCliente validacoesCliente;
+
+
+    private final ClienteRepository clienteRepository;
+    public AuthResponseDTO gerarAutenticacao(AuthenticationDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.senha());
         var auth = authenticationManager.authenticate(usernamePassword);
-        return tokenService.generateToken((ClienteModel)auth.getPrincipal());
+        return new AuthResponseDTO(tokenService.generateToken((ClienteModel)auth.getPrincipal()),clienteRepository.findByEmail(data.email()).getId());
     }
 
     public ClienteModelDTO registrarCliente (@Valid RegisterDTO cliente){
@@ -72,7 +74,7 @@ public class AuthenticationService {
                 newUsuarioModel.getPessoaFisica());
     }
 
-    public Boolean validarToken(String token){
+    public boolean validarToken(String token){
         return tokenService.validateToken(token).isEmpty();
     }
 }

@@ -3,6 +3,13 @@
 A API de autenticação foi construida utilizando a linguagem de programação Java, utilizando ferramentas como o Spring Boot e o Spring Security. Essa API tem por responsabilidade autenticar o usuário que está entrando no **SolinfBroker**, utlizando técnicas de seguranças para verificar as iformações repassadas pelo usuário.
 
 ---
+## Start Aplicação
+
+1º Criar o Cliente -> Post em /auth/register
+2º Efetuar o Login -> Post em /auth/login
+3º Salvar toke na Variavel "token" dentro da colection SolinfBroker
+
+---
 
 ## Stack
 

@@ -10,11 +10,11 @@ import java.time.LocalDateTime;
 public class ApiExceptionHandler {
     @ExceptionHandler(value = {ApiRequestException.class})
     public ResponseEntity<Object> handleApiRequestException(ApiRequestException apiRequestException){
-        ApiException apiException = new ApiException(
+        ApiExcept apiExcept = new ApiExcept(
                 apiRequestException.getMessage(),
                 HttpStatus.BAD_REQUEST,
                 LocalDateTime.now()
         );
-        return new ResponseEntity<>(apiException, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(apiExcept, HttpStatus.BAD_REQUEST);
     }
 }
