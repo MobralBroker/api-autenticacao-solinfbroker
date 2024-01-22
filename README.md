@@ -1,13 +1,15 @@
 ## API Autenticação
 
-A API de autenticação foi construida utilizando a linguagem de programação Java, utilizando ferramentas como o Spring Boot e o Spring Security. Essa API tem por responsabilidade autenticar o usuário que está entrando no **SolinfBroker**, utlizando técnicas de seguranças para verificar as iformações repassadas pelo usuário.
+A API de autenticação foi construida utilizando a linguagem de programação Java, utilizando ferramentas como o Spring Boot e o Spring Security. Essa API tem por responsabilidade autenticar o usuário que está entrando no **SolinfBroker**, utlizando técnicas de seguranças para verificar as informações repassadas pelo usuário.
 
 ---
 ## Start Aplicação
 
 1º Criar o Cliente -> Post em /auth/register
+
 2º Efetuar o Login -> Post em /auth/login
-3º Salvar toke na Variavel "token" dentro da colection SolinfBroker
+
+3º Salvar token na Variável "token" dentro da colection SolinfBroker
 
 ---
 
@@ -23,7 +25,7 @@ O **SolinfBroker** utiliza o Java 17 para construção da aplicação.
 
 Spring Boot é um projeto do ecossistema Spring Framework, que tem como objetivo simplificar e acelerar o desenvolvimento de aplicativos em Java.
 
-O Spring Boot fornece um servidor web incorporado, eliminando a necessidade de configurar e implantar um servidor separado para executar seu aplicativo. O Spring Boot também é bastante utilizado para a construção de aplicações baseadas em microsserviços, pois fornece ferramentas que facilitão a incorporação de serviços independentes.
+O Spring Boot fornece um servidor web incorporado, eliminando a necessidade de configurar e implantar um servidor separado para executar seu aplicativo. O Spring Boot também é bastante utilizado para a construção de aplicações baseadas em microsserviços, pois fornece ferramentas que facilitam a incorporação de serviços independentes.
 
 ### Spring Security
 
@@ -33,11 +35,11 @@ O Spring Security facilita a implementação de autenticação em aplicativos, s
 
 ### JWT
 
-O JWT (JSON Web Token) é um padrão aberto (RFC 7519) que define um formato compacto e autenticado para apresentação de informação em duas partes. Esse padrão é usado normalmente para o envio e o recebimento de informações de maneira segura entre cliente e servidor, e pode ser assinado digitalmente, o qeu garante a integridade dos dados.
+O JWT (JSON Web Token) é um padrão aberto (RFC 7519) que define um formato compacto e autenticado para apresentação de informação em duas partes. Esse padrão é usado normalmente para o envio e o recebimento de informações de maneira segura entre cliente e servidor, e pode ser assinado digitalmente, o que garante a integridade dos dados.
 
 O JWT é bastante utilizado para autenticação. Após uma autenticação bem-sucedida, um servidor pode gerar um JWT contendo reivindicações relevantes e enviá-lo para o cliente. O cliente então inclui o JWT em cabeçalhos de solicitações subsequentes para acessar recursos protegidos.
 
-O JWT também é frequentemente utilizado em soluções SSO (Single Sign-On), permitindo que um usuário autenticado acesse vários serviços sem a necesseidade de uma reautenticação.
+O JWT também é frequentemente utilizado em soluções SSO (Single Sign-On), permitindo que um usuário autenticado acesse vários serviços sem a necessidade de uma reautenticação.
 
 ### JpaRepository
 
@@ -75,7 +77,7 @@ Kconnect    | Container que possui o Kafka Connect, que fornece uma maneira fác
 
 Após o sucesso da execução do container, é necessário fazer a instalação de todas as dependências da nossa aplicação Spring de API de autenticação. As dependências podem ser visualizadas dentro do arquivo **pom.xml** que está dentro da pasta api-autenticacao.
 
-Para baixar e instalar as dependências, é necessário, que com o termial, dentro da pasta raíz do projeto, ou onde se encontra o arquivo **pom.xml**, e execute o seguinte comando:
+Para baixar e instalar as dependências, é necessário, que com o terminal, dentro da pasta raíz do projeto, ou onde se encontra o arquivo **pom.xml**, e execute o seguinte comando:
 
 > mvn spring-boot:run
 
