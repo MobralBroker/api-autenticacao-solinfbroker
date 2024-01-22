@@ -9,7 +9,7 @@ A API de autenticação foi construida utilizando a linguagem de programação J
 
 2º Efetuar o Login -> Post em /auth/login
 
-3º Salvar token na Variavel "token" dentro da colection SolinfBroker
+3º Salvar token na Variável "token" dentro da colection SolinfBroker
 
 ---
 
