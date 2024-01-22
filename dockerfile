@@ -21,9 +21,10 @@ WORKDIR /api-autenticacao
 # Copia apenas o JAR construído do estágio anterior
 COPY --from=builder /api-autenticacao/target/*.jar app.jar
 
-# Expondo a porta 8080
-EXPOSE 8081
-# EXPOSE 8761
+EXPOSE 8080
+
+# Config limit app java
+ENV JAVA_OPTS="-XX:MinRAMPercentage=60 -XX:MaxRAMPercentage=90"
 
 # Comando para executar a aplicação quando o contêiner for iniciado
 CMD ["java", "-jar", "app.jar"]
