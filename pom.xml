@@ -151,6 +151,15 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<excludes>
+						<exclude>**/config/**/*</exclude>
+						<exclude>**/dtos/**/*</exclude>
+						<exclude>**/model/**/*</exclude>
+						<exclude>**/exception/**/*</exclude>
+						<exclude>**/*.sql</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -183,6 +192,15 @@
 								</configuration>
 							</execution>
 						</executions>
+						<configuration>
+							<excludes>
+								<exclude>**/config/**/*</exclude>
+								<exclude>**/dtos/**/*</exclude>
+								<exclude>**/model/**/*</exclude>
+								<exclude>**/exception/**/*</exclude>
+								<exclude>**/*.sql</exclude>
+							</excludes>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
