@@ -42,7 +42,7 @@ public class AuthenticationController {
     public ResponseEntity<String> validarToken (@RequestParam("token") String token) {
         if(authenticationService.validarToken(token)){
             return new ResponseEntity<>("Token Não Autorizado",HttpStatus.UNAUTHORIZED); 
-        };
+        }
         return new ResponseEntity<>("Token Autorizado",HttpStatus.ACCEPTED);
     }
 
