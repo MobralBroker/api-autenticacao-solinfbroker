@@ -58,6 +58,9 @@ public class ClienteModel implements UserDetails{
 
     private double saldo;
 
+    @Version
+    private Long versao;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cliente")
     private Set<PessoaFisica> pessoaFisica = new HashSet<>();
