@@ -1,0 +1,1 @@
+ALTER TABLE carteira ADD COLUMN quantidade_bloqueada INT NOT NULL DEFAULT 0;
